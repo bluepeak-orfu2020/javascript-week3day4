@@ -1,0 +1,42 @@
+const express = require('express')
+const app = express();
+const port = 8000;
+
+app.get('/', (req, res) => {
+  res.send(`
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .btn:hover > .text {
+            text-decoration: underline;
+        }
+        .btn > span:hover {
+            background-color: deeppink;
+        }
+    </style>
+</head>
+<body>
+    <button class="btn" id="value1">
+        <span>&#9728;</span>
+        <span class="text">Click me!</span>
+    </button>
+    <script>
+        const btn = document.querySelector('.btn');
+        btn.addEventListener('click', (e) => {
+            console.log('target', e.target);
+            console.log('currentTarget', e.currentTarget);
+            console.log('id', e.currentTarget.id);
+        })
+    </script>
+</body>
+</html>
+  `)
+});
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}!`)
+});

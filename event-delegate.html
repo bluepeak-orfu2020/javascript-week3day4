@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            border: 1px solid deeppink;
+            padding: 20px;;
+        }
+    </style>
+</head>
+<body>
+    <button class="addButton">Add button</button>
+    <div class="container">
+    </div>
+    <script>
+        const container = document.querySelector('.container');
+        const addButton = document.querySelector('.addButton');
+        addButton.addEventListener('click', () => {
+            const elem = document.createElement('button');
+            elem.textContent = '0';
+            container.append(elem);
+
+            // elem.addEventListener('click', () => {
+            //     let num = parseInt(elem.textContent);
+            //     num += 1;
+            //     elem.textContent = num;
+            // })
+        });
+
+        container.addEventListener('click', (e) => {
+            console.log('e.target', e.target);
+            if (e.target.matches('button')) {
+                let num = parseInt(e.target.textContent);
+                num += 1;
+                e.target.textContent = num;
+            }
+        })
+    </script>
+</body>
+</html>

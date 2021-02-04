@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <p>a</p>
+        <p>b</p>
+        <p>c</p>
+        <p>d</p>
+        <p>e</p>
+    </div>
+    <script>
+        const arr = [1,2,3];
+
+        console.log('arr', arr);
+        
+        arr.push(4); // add to end
+        console.log('arr', arr);
+        
+        arr.pop(); // remove last element
+        console.log('arr', arr);
+        
+        arr.unshift('abc'); // add to begining
+        console.log('arr', arr);
+        
+        arr.shift(); // remove first element
+        console.log('arr', arr);
+
+        const slicedArray = arr.slice(0, 2)
+        console.log('slice arr', arr); 
+        console.log('slice 0-2', slicedArray); 
+
+        // Make a copy of the array
+        const arr2 = arr.slice()
+        arr2.push('arr2')
+        console.log('slice push arr', arr);
+        console.log('slice push arr2', arr2);
+
+        // Modern way to copy array
+        const arr3 = [...arr];
+        arr3.push('arr3')
+        console.log('slice push arr', arr);
+        console.log('slice push arr3', arr3);
+
+        // Difference between '==' and '==='
+        const x = '1'
+        const y = 1
+        console.log('==', x == y);
+        console.log('===', x === y);
+
+        const spliceArray = arr.slice()
+        const deleted = spliceArray.splice(1, 2, 'q', 'w')
+        console.log('spliced array', spliceArray);
+        console.log('deleted', deleted);
+
+        const spliceArray2 = arr.slice()
+        spliceArray2.splice(2, 0, 'abc', 'def')
+        console.log('spliced array 2', spliceArray2);
+
+        const spliceArray3 = arr.slice()
+        spliceArray3.splice(2, 1)
+        console.log('spliced array 3', spliceArray3);
+
+        console.log('abcdef'[3]);
+        const elems = document.querySelectorAll('.container > p')
+        console.log('elems', elems);
+        console.log('elems[2]', elems[2]);
+
+        console.log('regular for loop');
+        for (let i = 0; i < arr.length; i++) {
+            console.log(i, arr[i]);
+        }
+
+        console.log('For each loop');
+        for (const item in arr) {
+            console.log(item);
+        }
+
+        console.log('while loop');
+        let whileIndex = 0
+        while (whileIndex <= 5) {
+            console.log(whileIndex);
+            whileIndex++;
+        }
+
+        console.log('do-while loop');
+        let doWhileIndex = 0
+        do {
+            console.log(doWhileIndex);
+            doWhileIndex++;
+        } while (doWhileIndex <= 5)
+
+        console.log('Array forEach()');
+        arr.forEach((element, index) => {
+            console.log(index, element);
+        })
+
+        console.log('Array.map()');
+        console.log('square with map', arr.map(x => {
+            return x * x
+        }));
+        console.log('toString with map', arr.map(x => {
+            return '' + x
+        }));
+
+        console.log('Array.filter()');
+        console.log('filter <=2', arr.filter(x => x <= 2));
+        
+        console.log('Array.reduce()');
+        console.log('sum with reduce', arr.reduce((acc, val) => acc + val, 0));
+
+        console.log(
+            '',
+            arr.map(x => Math.random() * x)
+               .filter(x => x < 1)
+               .reduce((acc, item) => acc + item, 0)
+        );
+
+        console.log('has some number <2');
+        if (arr.some(x => x < 2)) {
+            console.log('true');
+        } else {
+            console.log('false');
+        }
+
+        console.log('all elements <2');
+        if (arr.every(x => x < 2)) {
+            console.log('true');
+        } else {
+            console.log('false');
+        }
+
+        console.log('find element');
+        const arr4 = [{id: 1, value: 'abc'}, {id: 2, value: 'def'}]
+        console.log('find', arr4.find(x => x.id === 2));
+        console.log('find not found', arr4.find(x => x.id === 3));
+
+    </script>
+</body>
+</html>

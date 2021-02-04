@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .card {
+            background-color: palegreen;
+            width: 75px;
+            min-height: 100px;
+            padding: 10px;
+            cursor: pointer;
+            position: relative;
+        }
+        .card > h2 {
+            font-size: 16px;
+            margin: 0;
+        }
+        .card > p {
+            font-size: 12px;
+        }
+        .close {
+            position: absolute;
+            right: 0;
+            top: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h2>Click me!</h2>
+            <p>Some text. Some text. Some Text</p>
+            <button class="close">
+                X
+            </button>
+        </div>
+    </div>
+    <script>
+        const card = document.querySelector('.card');
+        const close = document.querySelector('.close');
+        card.addEventListener('click', (e) => {
+            console.log('what element was clicked', e.target);
+            alert('More info');
+        })
+        close.addEventListener('click', (e) => {
+            console.log('close was clicked');
+            e.stopPropagation();
+            card.remove();
+        })
+    </script>
+</body>
+</html>

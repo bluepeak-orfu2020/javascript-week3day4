@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .outer,.inner {
+            border: 1px solid rebeccapurple;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="inner">
+            <button class="btn">Click me!</button>
+            <button class="btn2">Click me too!</button>
+            <button class="btn3">Capture and bubble</button>
+        </div>
+    </div>
+
+    <script>
+        const btn = document.querySelector('.btn');
+        
+        btn.onclick = function () { console.log('click handler 1'); }
+        // Overrides the first event handler
+        btn.onclick = function () { console.log('click handler 2'); }
+        
+        
+        const btn2 = document.querySelector('.btn2');
+        
+        // 'addEventListener' enables multiple listeners
+        btn2.addEventListener('click', function() {
+            console.log('btn2 click handler 1');
+        })
+        btn2.addEventListener('click', function() {
+            console.log('btn2 click handler 2');
+        })
+        
+        // window.addEventListener('mousemove', function (e) {
+            //     console.log('mouse move ' + e.clientX);
+            // })
+            
+        const outer = document.querySelector('.outer');
+        const inner = document.querySelector('.inner');
+        const btn3 = document.querySelector('.btn3');
+
+        outer.addEventListener('click', (e) => {
+            // e.stopPropagation();
+            console.log('outer capture')
+        }, true);
+        inner.addEventListener('click', () => console.log('inner capture'), true);
+        btn3.addEventListener('click', () => console.log('btn3 capture'), true);
+
+        outer.addEventListener('click', () => console.log('outer bubble'));
+        inner.addEventListener('click', () => console.log('inner bubble'));
+        btn3.addEventListener('click', (e) => {
+            // e.stopPropagation();
+            console.log('btn3 bubble')
+        });
+    </script>
+</body>
+</html>

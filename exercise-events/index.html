@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button {
+            margin: 10px 0;
+        }
+        .circle {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background-color: black;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <button class="button">Add circle</button>
+    <div class="container">
+    </div>
+    <script>
+        const container = document.querySelector('.container');
+        const button = document.querySelector('.button');
+        button.addEventListener('click', () => {
+            const elem = document.createElement('span');
+            elem.classList.add('circle');
+            container.append(elem);
+
+            // Better memory performance when using event delegation
+            // elem.addEventListener('click', (e) => {
+            //     e.target.style.backgroundColor = 
+            //         `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`
+            // });
+        });
+        container.addEventListener('click', (e) => {
+            e.target.style.backgroundColor = 
+                    `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`
+        })
+
+        container.addEventListener('dblclick', (e) => {
+            e.target.style.backgroundColor = 'black';
+        })
+
+
+    </script>
+</body>
+</html>

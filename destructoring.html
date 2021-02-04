@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const obj = {
+            key1: 'abc',
+            key2: 123
+        };
+
+        const k = obj.key1;
+        const { key1 } = obj;
+        console.log('compare', k, key1);
+
+        const { key1: x } = obj;
+        console.log('x', x);
+
+        const { key1: q, key2: w } = obj;
+        console.log('read multiple props from obj', q, w);
+
+        // function func1(obj1) {
+        //     console.log('prop1', obj1.prop1);
+        //     console.log('prop2', obj1.prop2);
+        // }
+        function func1({ prop1, prop2 }) {
+            console.log('prop1', prop1);
+            console.log('prop2', prop2);
+        }
+        func1({ prop1: 'qwerty', prop2: 54321 });
+
+        const arr = [1, 2, 3]
+        const [v1,v2,v3] = arr;
+        console.log('array destruct', v1, v2, v3);
+        const [_, x2] = arr;
+        console.log('array destruct with ignore', x2);
+
+        console.log('arr', arr);
+        console.log('arr spread', ...arr);
+
+        function func2(a, b, c) {
+            console.log('func2', a, b, c);
+        }
+        func2(arr)
+        func2(...arr)
+    </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .counter {
+      display: block;
+      margin: 10px 0;
+    }
+    .source {
+      background-color: palegoldenrod;
+      width: 300px;
+      height: 300px;
+      position: relative;
+    }
+
+    .item {
+      background-color: rebeccapurple;
+      width: 20px;
+      height: 20px;
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+  <input type="text" class="counter">
+
+  <div class="source">
+
+  </div>
+
+  <script>
+    const counter = document.querySelector('.counter');
+    const source = document.querySelector('.source');
+
+    function randomizePosition(elem) {
+      elem.style.left = `${Math.random() * 280}px`;
+      elem.style.top = `${Math.random() * 280}px`;
+    }
+
+    function clear() {
+      document.querySelectorAll('.item')
+        .forEach(item => item.remove())
+    }
+
+    function createItems(count) {
+      for (let i = 0; i < count; ++i) {
+        const elem = document.createElement('div')
+        elem.classList.add('item');
+        randomizePosition(elem);
+        source.append(elem);
+      }
+    }
+
+    counter.addEventListener('blur', () => {
+      clear();
+      const num = counter.value;
+      createItems(num)
+    });
+
+    source.addEventListener('mouseenter', (e) => {
+      if (e.target.classList.contains('item')) {
+        randomizePosition(e.target)
+      }
+    }, true)
+  </script>
+</body>
+</html>
